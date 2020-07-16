@@ -15,6 +15,7 @@
 		5841E40324BD4ACC0062F9FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5841E40124BD4ACC0062F9FF /* LaunchScreen.storyboard */; };
 		5841E40E24BD4ACC0062F9FF /* Macro_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5841E40D24BD4ACC0062F9FF /* Macro_TrackerTests.swift */; };
 		5841E41924BD4ACC0062F9FF /* Macro_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5841E41824BD4ACC0062F9FF /* Macro_TrackerUITests.swift */; };
+		58B78AEE24BFA16B00B09C22 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B78AED24BFA16B00B09C22 /* UITextField+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5841E41424BD4ACC0062F9FF /* Macro-TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Macro-TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5841E41824BD4ACC0062F9FF /* Macro_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro_TrackerUITests.swift; sourceTree = "<group>"; };
 		5841E41A24BD4ACC0062F9FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58B78AED24BFA16B00B09C22 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				5841E3FF24BD4ACC0062F9FF /* Assets.xcassets */,
 				5841E40124BD4ACC0062F9FF /* LaunchScreen.storyboard */,
 				5841E40424BD4ACC0062F9FF /* Info.plist */,
+				58B78AED24BFA16B00B09C22 /* UITextField+Extensions.swift */,
 			);
 			path = "Macro-Tracker";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5841E3FB24BD4ACA0062F9FF /* ViewController.swift in Sources */,
+				58B78AEE24BFA16B00B09C22 /* UITextField+Extensions.swift in Sources */,
 				5841E3F724BD4ACA0062F9FF /* AppDelegate.swift in Sources */,
 				5841E3F924BD4ACA0062F9FF /* SceneDelegate.swift in Sources */,
 			);
