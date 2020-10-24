@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -18,6 +19,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var carbsInputField: UITextField!
     
     @IBOutlet weak var proteinInputField: UITextField!
+    
+    @IBOutlet weak var foodNameInputField: UITextField!
     
     //output labels
     @IBOutlet weak var calsOutputLabel: UILabel!
@@ -38,6 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var protein = 0;
         var carbs = 0;
         var fat = 0;
+        let identifier = UUID()
     }
     // dictionary of dates : array of food for that day
     var dateDict: [String: Array<FoodItem>] = [:];
@@ -63,7 +67,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         
         let allowedCharacters = "1234567890"
         let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
@@ -72,13 +77,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getDate() -> String {
-        let dateWithTime = Date()
+        let dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "yyyy-MM-dd";
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-
-        let date = dateFormatter.string(from: dateWithTime)
-        
+        let date = dateFormatter.string(from: Foundation.Date());
         return date;
     }
     
@@ -96,11 +98,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             fat += foodItem.fat
             protein += foodItem.protein
         }
-        // change the labels to the updates values
-        calsOutputLabel.text = String(cals)
-        fatOutputLabel.text = String(fat)
-        carbsOutputLabel.text = String(carbs)
-        proteinOutputLabel.text = String(protein)
+        // change the labels to the summed values
+        calsOutputLabel.text = String(cals);
+        fatOutputLabel.text = String(fat) + "g";
+        carbsOutputLabel.text = String(carbs) + "g";
+        proteinOutputLabel.text = String(protein) + "g";
         
         
     }
@@ -110,8 +112,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //dismiss the keyboard if not already dismissed
         self.view.endEditing(true)
-        
-        
+
         let currDate = getDate();
         // determine if the key is present in hashmap
         // add the key:val to dict if not present
@@ -121,18 +122,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         var fItem = FoodItem();
         // assign the values to the 'FoodItem' struct
-        fItem.cals = Int(calsInputField.text ?? "0")!
-        fItem.fat = Int(fatInputField.text ?? "0")!
-        fItem.carbs = Int(carbsInputField.text ?? "0")!
-        fItem.protein = Int(proteinInputField.text ?? "0")!
-        
+        if (calsInputField.text != "") {
+            fItem.cals = Int(calsInputField.text ?? "0")!
+        }
+        if (fatInputField.text != "") {
+            fItem.fat = Int(fatInputField.text ?? "0")!
+        }
+        if (carbsInputField.text != "") {
+            fItem.carbs = Int(carbsInputField.text ?? "0")!
+        }
+        if (proteinInputField.text != "") {
+            fItem.protein = Int(proteinInputField.text ?? "0")!
+        }
         //append the item to proper Array in the dateDict
         dateDict[currDate]?.append(fItem)
         // update the labels
         updateTotal(date: currDate)
-        
-        
-        
         
         // reset the input fields to placeholders
         calsInputField.text = ""
@@ -140,8 +145,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         carbsInputField.text = ""
         proteinInputField.text = ""
 
-        
-        
     }
     
 }
