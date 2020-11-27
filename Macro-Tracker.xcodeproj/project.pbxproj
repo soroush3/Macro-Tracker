@@ -19,6 +19,7 @@
 		5841E40324BD4ACC0062F9FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5841E40124BD4ACC0062F9FF /* LaunchScreen.storyboard */; };
 		5841E40E24BD4ACC0062F9FF /* Macro_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5841E40D24BD4ACC0062F9FF /* Macro_TrackerTests.swift */; };
 		5841E41924BD4ACC0062F9FF /* Macro_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5841E41824BD4ACC0062F9FF /* Macro_TrackerUITests.swift */; };
+		589F3288256F1BC200DBDCD9 /* TableViewFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F3286256F1BC200DBDCD9 /* TableViewFoodCell.swift */; };
 		58B78AEE24BFA16B00B09C22 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B78AED24BFA16B00B09C22 /* UITextField+Extensions.swift */; };
 		58B78AF124C0C2FC00B09C22 /* Macro-Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58B78AEF24C0C2FC00B09C22 /* Macro-Tracker.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		5841E41424BD4ACC0062F9FF /* Macro-TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Macro-TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5841E41824BD4ACC0062F9FF /* Macro_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro_TrackerUITests.swift; sourceTree = "<group>"; };
 		5841E41A24BD4ACC0062F9FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		589F3286256F1BC200DBDCD9 /* TableViewFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFoodCell.swift; sourceTree = "<group>"; };
 		58B78AED24BFA16B00B09C22 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		58B78AF024C0C2FC00B09C22 /* Macro-Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Macro-Tracker.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 		5841E3F524BD4ACA0062F9FF /* Macro-Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				584FCB6B256EF8D500655880 /* TableViewFoodCell */,
 				5819ABD824C0C60B0026451E /* mData */,
 				58B78AF524C0C4DB00B09C22 /* ViewControllers */,
 				58B78AF424C0C4B200B09C22 /* Resources */,
@@ -148,6 +151,14 @@
 				5841E41A24BD4ACC0062F9FF /* Info.plist */,
 			);
 			path = "Macro-TrackerUITests";
+			sourceTree = "<group>";
+		};
+		584FCB6B256EF8D500655880 /* TableViewFoodCell */ = {
+			isa = PBXGroup;
+			children = (
+				589F3286256F1BC200DBDCD9 /* TableViewFoodCell.swift */,
+			);
+			path = TableViewFoodCell;
 			sourceTree = "<group>";
 		};
 		58B78AF224C0C43B00B09C22 /* Extensions */ = {
@@ -249,7 +260,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Sherwin;
 				TargetAttributes = {
 					5841E3F224BD4ACA0062F9FF = {
@@ -322,6 +333,7 @@
 				58B78AF124C0C2FC00B09C22 /* Macro-Tracker.xcdatamodeld in Sources */,
 				5819ABE524C0C92B0026451E /* FoodItem+CoreDataClass.swift in Sources */,
 				58B78AEE24BFA16B00B09C22 /* UITextField+Extensions.swift in Sources */,
+				589F3288256F1BC200DBDCD9 /* TableViewFoodCell.swift in Sources */,
 				5819ABE424C0C92B0026451E /* Date+CoreDataProperties.swift in Sources */,
 				5819ABE324C0C92B0026451E /* Date+CoreDataClass.swift in Sources */,
 				5841E3F724BD4ACA0062F9FF /* AppDelegate.swift in Sources */,
@@ -406,6 +418,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -466,6 +479,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F0ED0B8C-7FBA-40B1-98F3-26D8EE167D50"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "TableViewFoodCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470 - bc2b7b92c54c844f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Macro_Tracker.TableViewFoodCell.foodName.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Macro-Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sherwin/Documents/git/Macro-Tracker/Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470 - 9bc18f4259d5a07b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Macro_Tracker.TableViewFoodCell.foodName.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Macro-Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sherwin/Documents/git/Macro-Tracker/Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470 - 61d4fcbf8c6fde9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Macro_Tracker.TableViewFoodCell.foodName.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Macro-Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sherwin/Documents/git/Macro-Tracker/Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470 - e8a6c08136b412f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Macro_Tracker.TableViewFoodCell.foodName.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Macro-Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sherwin/Documents/git/Macro-Tracker/Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470 - c809ed5e56293892"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Macro_Tracker.TableViewFoodCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Macro_Tracker.TableViewFoodCell"
+                  moduleName = "Macro-Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sherwin/Documents/git/Macro-Tracker/Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "8D012B0E-5ABD-4287-8207-AB74828D2470 - 7dea636cdd4dddf3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Macro_Tracker.TableViewFoodCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Macro_Tracker.TableViewFoodCell&gt;"
+                  moduleName = "Macro-Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sherwin/Documents/git/Macro-Tracker/Macro-Tracker/TableViewFoodCell/TableViewFoodCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "221">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
