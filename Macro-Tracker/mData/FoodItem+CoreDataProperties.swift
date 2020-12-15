@@ -17,12 +17,12 @@ extension FoodItem {
         return NSFetchRequest<FoodItem>(entityName: "FoodItem")
     }
 
-    @NSManaged public var cals: Int16
-    @NSManaged public var carbs: Int16
-    @NSManaged public var fat: Int16
-    @NSManaged public var identifier: UUID?
-    @NSManaged public var name: String?
-    @NSManaged public var protein: Int16
-    @NSManaged public var theDate: Date?
+    @NSManaged public var cals: Int64
+    @NSManaged public var carbs: Int64
+    @NSManaged public var fat: Int64
+    @NSManaged public var foodName: String?
+    @NSManaged public var identifier: UUID
+    @NSManaged public var protein: Int64
+    @NSManaged public var date: String?
 
 }

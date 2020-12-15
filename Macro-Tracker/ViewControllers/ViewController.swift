@@ -37,23 +37,46 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     // header above the table
     @IBOutlet var headerView : UIView!
     
+    var currDate = "";
+
+    //Reference to managed object context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    // struct of a foodItem entity
-    struct FoodItem {
-        var foodName = "";
-        var cals = 0
-        var protein = 0;
-        var carbs = 0;
-        var fat = 0;
-        var date = ""
-        var identifier = UUID().uuidString
+    var foodItemArray:[FoodItem]?
+    
+    func fetchFoodItems() {
+        // Fetch the food Items stored via Core Data for the given day
+        let request = FoodItem.fetchRequest() as NSFetchRequest<FoodItem>
+        
+        // Set filtering for the request based on the date
+        let pred = NSPredicate(format: "date CONTAINS %@", self.currDate)
+        
+        request.predicate = pred
+        
+        self.foodItemArray = try! self.context.fetch(request)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
-
-    // dictionary of dates : array of food for that day
-    var dateDict: [String: Array<FoodItem>] = [:];
-
+    
+    @objc func updateView() {
+        if (self.currDate != getDate()) {
+            self.currDate = getDate()
+            
+            self.fetchFoodItems()
+            self.updateTotal(date: self.currDate)
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // runs updateView function every time app is back in foreground
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateView), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        self.currDate = getDate();
         // make the input fields only allow numeric values
         calsInputField.delegate = self
         fatInputField.delegate = self
@@ -71,9 +94,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         carbsInputField.addDoneButtonOnKeyboard()
         proteinInputField.addDoneButtonOnKeyboard()
         foodNameInputField.addDoneButtonOnKeyboard()
+        
         // load the current day and display the proper
         // contents of the food based on the day
-        updateTotal(date: getDate())
+        self.fetchFoodItems()
+        self.updateTotal(date: self.currDate)
         
         
     }
@@ -100,14 +125,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         // for that date(key)
         var cals = 0, carbs = 0, fat = 0, protein = 0
         
-        if (!dateDict.keys.contains(date)) {return}
-        
         // sum up the values
-        for foodItem in dateDict[date]! {
-            cals += foodItem.cals
-            carbs += foodItem.carbs
-            fat += foodItem.fat
-            protein += foodItem.protein
+        for foodItem in self.foodItemArray! {
+            cals += Int(foodItem.cals)
+            carbs += Int(foodItem.carbs)
+            fat += Int(foodItem.fat)
+            protein += Int(foodItem.protein)
         }
         // change the labels to the summed values
         calsOutputLabel.text = String(cals);
@@ -118,10 +141,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     
     @IBAction func addFoodTap(_ sender: UIButton) {
-        let currDate = getDate();
         //dismiss the keyboard if not already dismissed
         self.view.endEditing(true)
-        
+
         // foodName needs to be present to add food, alerts user if not
         if (foodNameInputField.text?.replacingOccurrences(of:" ", with: "").count == 0) {
             let alert = UIAlertController(title: "Error", message: "Food items must have a 'Food Name'", preferredStyle: .alert)
@@ -131,36 +153,32 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             return
         }
 
-        // determine if the key is present in hashmap
-        // add the key:val to dict if not present
-        if (!dateDict.keys.contains(currDate)) {
-            dateDict[currDate] = Array<FoodItem>()
-        }
         // create food item and assign values
-        var fItem = FoodItem();
-        fItem.date = currDate
+        let newFoodItem = FoodItem(context: self.context)
         // assign the values to the 'FoodItem' struct
         if (calsInputField.text != "") {
-            fItem.cals = Int(calsInputField.text ?? "0")!
+            newFoodItem.cals = Int64(calsInputField.text ?? "0")!
         }
         if (fatInputField.text != "") {
-            fItem.fat = Int(fatInputField.text ?? "0")!
+            newFoodItem.fat = Int64(fatInputField.text ?? "0")!
         }
         if (carbsInputField.text != "") {
-            fItem.carbs = Int(carbsInputField.text ?? "0")!
+            newFoodItem.carbs = Int64(carbsInputField.text ?? "0")!
         }
         if (proteinInputField.text != "") {
-            fItem.protein = Int(proteinInputField.text ?? "0")!
+            newFoodItem.protein = Int64(proteinInputField.text ?? "0")!
         }
         if (foodNameInputField.text != "") {
-            fItem.foodName = foodNameInputField.text!
+            newFoodItem.foodName = foodNameInputField.text!
         }
-        //append the item to proper Array in the dateDict
-        dateDict[currDate]?.append(fItem)
+        newFoodItem.date = self.currDate
+        newFoodItem.identifier = UUID()
+        // Save the data
+        try! self.context.save()
+        
+        self.fetchFoodItems()
         // update the labels
-        updateTotal(date: currDate)
-
-        self.tableView.reloadData()
+        self.updateTotal(date: self.currDate)
         
         // reset the input fields to placeholders
         calsInputField.text = ""
@@ -174,19 +192,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     // table view methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return dateDict[getDate()]?.count ?? 0
+        return self.foodItemArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let foodCell = tableView.dequeueReusableCell(withIdentifier: "TableViewFoodCell", for: indexPath) as! TableViewFoodCell
         // fill the labels of the custom cell
-        let currDate = getDate()
-        foodCell.foodName?.text = dateDict[currDate]?[indexPath.row].foodName
-        foodCell.calorieLabel?.text = String(dateDict[currDate]?[indexPath.row].cals ?? 0)
-        foodCell.fatLabel?.text = String(dateDict[currDate]?[indexPath.row].fat ?? 0)
-        foodCell.carbLabel?.text = String(dateDict[currDate]?[indexPath.row].carbs ?? 0)
-        foodCell.proteinLabel?.text = String(dateDict[currDate]?[indexPath.row].protein ?? 0)
+        foodCell.foodName?.text = self.foodItemArray?[indexPath.row].foodName
+        foodCell.calorieLabel?.text = String(self.foodItemArray?[indexPath.row].cals ?? 0)
+        foodCell.fatLabel?.text = String(self.foodItemArray?[indexPath.row].fat ?? 0)
+        foodCell.carbLabel?.text = String(self.foodItemArray?[indexPath.row].carbs ?? 0)
+        foodCell.proteinLabel?.text = String(self.foodItemArray?[indexPath.row].protein ?? 0)
 
         return foodCell
     }
@@ -194,12 +211,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
             if editingStyle == .delete {
-                // remove the item from the data model (date dictionary)
-                dateDict[getDate()]?.remove(at: indexPath.row)
-                // delete the table view row
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                let foodToRemove = self.foodItemArray![indexPath.row]
                 
-                updateTotal(date: getDate())
+                self.context.delete(foodToRemove)
+                
+                try! self.context.save()
+                
+                self.fetchFoodItems()
+
+                self.updateTotal(date: self.currDate)
             }
         }
 }
