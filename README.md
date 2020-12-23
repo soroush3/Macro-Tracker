@@ -1,4 +1,4 @@
-# Macro-Tracker
+# Macro-Tracker (iOS App)
 
 Daily tracker for an individual's macro-splits (nutrition).
 
